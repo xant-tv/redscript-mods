@@ -1,0 +1,7 @@
+# IDE
+.vscode/
+.vscode/**
+
+# Packages
+package/
+package/*
