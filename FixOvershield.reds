@@ -1,3 +1,8 @@
+// Name: FixOvershield
+// Author: fyodorxtv
+// Date: 2023-10-13
+// Version: 1.1
+
 // Adds a callback for the custom limit to the overshield listener.
 @addMethod(OvershieldMinValueListener)
 protected cb func OnStatPoolCustomLimitReached(const value: Float) -> Void {
@@ -10,6 +15,7 @@ protected cb func OnStatPoolCustomLimitReached(const value: Float) -> Void {
 // Replace the effector logic to react to custom limit appropriately.
 @replaceMethod(ScaleOvershieldDecayOverTimeEffector)
 protected func ContinuousAction(owner: wref<GameObject>, instigator: wref<GameObject>) -> Void {
+    let statSys: ref<StatsSystem> = GameInstance.GetStatsSystem(owner.GetGame());
     let statPoolSys: ref<StatPoolsSystem> = GameInstance.GetStatPoolsSystem(owner.GetGame());
     let ownerStats: StatsObjectID = Cast(owner.GetEntityID());
     if (this.m_markedForReset) {
@@ -31,14 +37,15 @@ protected func ContinuousAction(owner: wref<GameObject>, instigator: wref<GameOb
         return;
     } 
     // FTLog("OvershieldEffectorNotApplied");
-    let threshold: Float = 0.0;
-    let customThreshold: Float = statPoolSys.GetStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield);
+    let threshold: Float = statSys.GetStatValue(ownerStats, gamedataStatType.OvershieldDecayStartThreshold);
+    let limit: Float = statPoolSys.GetStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield);
+    // Fail-safe in case the stat pool ever becomes de-synced from the limit.
+    if (limit != threshold) {
+        // FTLog("SyncStatPoolWithThreshold");
+        statPoolSys.RequestSettingStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield, threshold, owner);
+    }
     // let value: Float = statPoolSys.GetStatPoolValue(ownerStats, gamedataStatPoolType.Overshield);
-    // FTLog(s"Default: \(threshold), Custom: \(customThreshold), Value: \(value)");
-    if (customThreshold > threshold) {
-        // FTLog("OvershieldEffectorUpdateThreshold");
-        threshold = customThreshold;
-    };
+    // FTLog(s"Threshold: \(threshold), Limit: \(limit), Value: \(value)");
     if (statPoolSys.GetStatPoolValue(ownerStats, gamedataStatPoolType.Overshield) > threshold) {
         // FTLog("OvershieldEffectorAddNewModifier");
         this.m_elapsedTime = 0.0;
@@ -54,18 +61,12 @@ private func OnRestored(saveVersion: Int32, gameVersion: Int32) -> Void {
     // FTLog("ApplyCustomLimitToOvershieldStatPool");
     let game = GetGameInstance();
     let player = GetPlayer(game);
-    let playerData = this.GetDevelopmentData(player);
     let playerStats: StatsObjectID = Cast(player.GetEntityID());
+    let statSys: ref<StatsSystem> = GameInstance.GetStatsSystem(game);
     let statPoolSys: ref<StatPoolsSystem> = GameInstance.GetStatPoolsSystem(game);
-    let profLevel = playerData.m_proficiencies[playerData.GetProficiencyIndexByType(gamedataProficiencyType.StrengthSkill)].currentLevel;
-    // FTLog(s"Proficiency: \(ToString(profLevel))");
-    if (profLevel >= 55) {
-        // FTLog("HasPassiveApplyLimit: 10");
-        statPoolSys.RequestSettingStatPoolValueCustomLimit(playerStats, gamedataStatPoolType.Overshield, 10, player);
-        return;
-    };
-    // FTLog("NoPassiveApplyLimit: 0");
-    statPoolSys.RequestSettingStatPoolValueCustomLimit(playerStats, gamedataStatPoolType.Overshield, 0, player);
+    let threshold = statSys.GetStatValue(playerStats, gamedataStatType.OvershieldDecayStartThreshold);
+    // FTLog(s"Threshold: \(threshold)");
+    statPoolSys.RequestSettingStatPoolValueCustomLimit(playerStats, gamedataStatPoolType.Overshield, threshold, player);
 }
 
 // Set custom limit on player reaching required proficiency.
@@ -76,13 +77,13 @@ private func ProcessProficiencyPassiveBonus(profIndex: Int32) -> Void {
     let game = GetGameInstance();
     let player = GetPlayer(game);
     let playerStats: StatsObjectID = Cast(player.GetEntityID());
+    let statSys: ref<StatsSystem> = GameInstance.GetStatsSystem(game);
     let statPoolSys: ref<StatPoolsSystem> = GameInstance.GetStatPoolsSystem(game);
     let strengthIndex = this.GetProficiencyIndexByType(gamedataProficiencyType.StrengthSkill);
     if (profIndex != strengthIndex) {
         return;
     };
-    if (this.m_proficiencies[profIndex].currentLevel >= 55) {
-        // FTLog("HasPassiveApplyLimit: 10");
-        statPoolSys.RequestSettingStatPoolValueCustomLimit(playerStats, gamedataStatPoolType.Overshield, 10, player);
-    };
+    let threshold = statSys.GetStatValue(playerStats, gamedataStatType.OvershieldDecayStartThreshold);
+    // FTLog(s"Threshold: \(threshold)");
+    statPoolSys.RequestSettingStatPoolValueCustomLimit(playerStats, gamedataStatPoolType.Overshield, threshold, player);
 }

@@ -1,3 +1,8 @@
+// Name: UnlockMods
+// Author: fyodorxtv
+// Date: 2023-10-12
+// Version: 1.0
+
 @replaceMethod(RPGManager)
 public final static func CanPartBeUnequipped(data: InventoryItemData, slotId: TweakDBID) -> Bool {
     let itemID: ItemID = data.ID;

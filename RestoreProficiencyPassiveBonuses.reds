@@ -1,3 +1,8 @@
+// Name: RestoreProficiencyPassiveBonuses
+// Author: fyodorxtv
+// Date: 2023-10-12
+// Version: 1.0
+
 @replaceMethod(PlayerDevelopmentData)
 private final const func RestoreProficiencyPassiveBonuses(profIndex: Int32, gameInstance: GameInstance) -> Void {  
   let bonusRecord: ref<PassiveProficiencyBonus_Record>;
