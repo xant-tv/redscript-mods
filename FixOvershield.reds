@@ -18,6 +18,15 @@ protected func ContinuousAction(owner: wref<GameObject>, instigator: wref<GameOb
     let statSys: ref<StatsSystem> = GameInstance.GetStatsSystem(owner.GetGame());
     let statPoolSys: ref<StatPoolsSystem> = GameInstance.GetStatPoolsSystem(owner.GetGame());
     let ownerStats: StatsObjectID = Cast(owner.GetEntityID());
+    let threshold: Float = statSys.GetStatValue(ownerStats, gamedataStatType.OvershieldDecayStartThreshold);
+    let limit: Float = statPoolSys.GetStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield);
+    // let value: Float = statPoolSys.GetStatPoolValue(ownerStats, gamedataStatPoolType.Overshield);
+    // FTLog(s"Threshold: \(threshold), Limit: \(limit), Value: \(value)");
+    // Fail-safe in case the stat pool ever becomes de-synced from the limit.
+    if (limit != threshold) {
+        // FTLog("SyncStatPoolWithThreshold");
+        statPoolSys.RequestSettingStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield, threshold, owner);
+    }
     if (this.m_markedForReset) {
         // FTLog("OvershieldEffectorMarkedForReset");
         this.ResetDecayModifier();
@@ -37,15 +46,6 @@ protected func ContinuousAction(owner: wref<GameObject>, instigator: wref<GameOb
         return;
     } 
     // FTLog("OvershieldEffectorNotApplied");
-    let threshold: Float = statSys.GetStatValue(ownerStats, gamedataStatType.OvershieldDecayStartThreshold);
-    let limit: Float = statPoolSys.GetStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield);
-    // Fail-safe in case the stat pool ever becomes de-synced from the limit.
-    if (limit != threshold) {
-        // FTLog("SyncStatPoolWithThreshold");
-        statPoolSys.RequestSettingStatPoolValueCustomLimit(ownerStats, gamedataStatPoolType.Overshield, threshold, owner);
-    }
-    // let value: Float = statPoolSys.GetStatPoolValue(ownerStats, gamedataStatPoolType.Overshield);
-    // FTLog(s"Threshold: \(threshold), Limit: \(limit), Value: \(value)");
     if (statPoolSys.GetStatPoolValue(ownerStats, gamedataStatPoolType.Overshield) > threshold) {
         // FTLog("OvershieldEffectorAddNewModifier");
         this.m_elapsedTime = 0.0;
