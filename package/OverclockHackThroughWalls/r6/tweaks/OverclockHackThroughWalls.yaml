@@ -1,0 +1,12 @@
+# Name: OverclockHackThroughWalls
+# Author: fyodorxtv
+# Date: 2023-10-15
+# Version: 1.0
+
+# Overwrite the inherited ping sound effect with nothing.
+# Trust me, you'll thank me for this.
+BaseStatusEffect.Intelligence_60_Ping:
+  SFX:
+   # Could set to an empty list but this is less destructive.
+   - !remove BaseStatusEffect.PingMarkStatusEffect_inline5
+    

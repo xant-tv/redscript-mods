@@ -16,7 +16,7 @@ private final const func RestoreProficiencyPassiveBonuses(profIndex: Int32, game
       effectorRecord = bonusRecord.EffectorToTrigger();
       if IsDefined(effectorRecord) && !effectorRecord.IsA(n"gamedataAddDevelopmentPointEffector_Record") {
         effectorSystem.ApplyEffector(this.m_ownerID, this.m_owner, effectorRecord.GetID());
-      };
+      }
       i += 1;
     };
   };

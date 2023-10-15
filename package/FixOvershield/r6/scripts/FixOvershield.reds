@@ -30,11 +30,11 @@ protected func ContinuousAction(owner: wref<GameObject>, instigator: wref<GameOb
     if (this.m_markedForReset) {
         // FTLog("OvershieldEffectorMarkedForReset");
         this.ResetDecayModifier();
-    };
+    }
     if statPoolSys.IsStatPoolModificationDelayed(ownerStats, gamedataStatPoolType.Overshield) {
         // FTLog("OvershieldEffectorStatPoolDelayed");
         return;
-    };
+    }
     if (this.m_effectApplied) {
         // FTLog("OvershieldEffectorIsApplied");
         if !(this.m_maxValueApplied) {
@@ -51,7 +51,7 @@ protected func ContinuousAction(owner: wref<GameObject>, instigator: wref<GameOb
         this.m_elapsedTime = 0.0;
         this.AddModifier();
         this.m_effectApplied = true;
-    };
+    }
 }
 
 // Set custom limit on file load.
@@ -82,7 +82,7 @@ private func ProcessProficiencyPassiveBonus(profIndex: Int32) -> Void {
     let strengthIndex = this.GetProficiencyIndexByType(gamedataProficiencyType.StrengthSkill);
     if (profIndex != strengthIndex) {
         return;
-    };
+    }
     let threshold = statSys.GetStatValue(playerStats, gamedataStatType.OvershieldDecayStartThreshold);
     // FTLog(s"Threshold: \(threshold)");
     statPoolSys.RequestSettingStatPoolValueCustomLimit(playerStats, gamedataStatPoolType.Overshield, threshold, player);
