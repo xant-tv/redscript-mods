@@ -1,0 +1,239 @@
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_AR_SMG_LMG_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_AR_SMG_LMG_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_AR_SMG_LMG_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_AR_SMG_LMG_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_AR_SMG_LMG_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_AR_SMG_LMG_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_AR_SMG_LMG_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_AR_SMG_LMG_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_AR_SMG_LMG_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_AR_SMG_LMG_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_AR_SMG_LMG_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_AR_SMG_LMG_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Handgun_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Handgun_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Handgun_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Handgun_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Handgun_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Handgun_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Handgun_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Handgun_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Handgun_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Handgun_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Handgun_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Handgun_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Shotgun_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Shotgun_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Shotgun_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Shotgun_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Shotgun_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Shotgun_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Shotgun_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Shotgun_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Shotgun_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Shotgun_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Shotgun_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Shotgun_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Precision_Sniper_Rifle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Precision_Sniper_Rifle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Precision_Sniper_Rifle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Precision_Sniper_Rifle_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Precision_Sniper_Rifle_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Precision_Sniper_Rifle_NoMuzzle_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Precision_Sniper_Rifle_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Precision_Sniper_Rifle_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Precision_Sniper_Rifle_NoScope_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Power_Precision_Sniper_Rifle_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Tech_Precision_Sniper_Rifle_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"
+
+# Add iconic mod element to all weapon bases.
+Items.Base_Smart_Precision_Sniper_Rifle_NoAttachments_Blueprint_inline0:
+  childElements:
+    - !prepend-once t"Items.IconicRangedWeaponModElement"

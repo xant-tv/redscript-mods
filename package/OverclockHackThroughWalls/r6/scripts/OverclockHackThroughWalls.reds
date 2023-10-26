@@ -1,19 +1,18 @@
 // Name: OverclockHackThroughWalls
 // Author: fyodorxtv
-// Date: 2023-10-15
-// Version: 1.0
+// Date: 2023-10-16
+// Version: 1.1
 
-// Players can save in the middle of Overclock and it will _permanently_ give them an AutoReveal modifier. :facepalm:
+// Players can save in the middle of Overclock and it will _permanently_ give them the status effect. :facepalm:
 // This needs to be checked for on file load and removed.
 @wrapMethod(PlayerDevelopmentSystem)
 private func OnRestored(saveVersion: Int32, gameVersion: Int32) -> Void {
     wrappedMethod(saveVersion, gameVersion);
     // FTLog("RemoveExistingAutoRevealModifiersOnPlayerRestore");
     let game = GetGameInstance();
-    let statSys: ref<StatsSystem> = GameInstance.GetStatsSystem(game);
+    let statusEffectSys: ref<StatusEffectSystem> = GameInstance.GetStatusEffectSystem(game);
     let player = GetPlayer(game);
-    let playerStats: StatsObjectID = Cast(player.GetEntityID());
-    statSys.RemoveAllModifiers(playerStats, gamedataStatType.AutoReveal, true);
+    statusEffectSys.RemoveStatusEffect(player.GetEntityID(), t"BaseStatusEffect.Intelligence_60_Ping_Aura");
 }
 
 // This method sets a scripted puppet as scannable.
@@ -29,19 +28,20 @@ public func SetScannableThroughWallsIfPossible() -> Void {
     let isHighlighted: Bool = IsDefined(scriptedPuppet) && scriptedPuppet.IsHighlightedInFocusMode();
     let game = GetGameInstance();
     let statusEffectSys: ref<StatusEffectSystem> = GameInstance.GetStatusEffectSystem(game);
-    let effectApplied: Bool = false;
     if (this.GetOwner().CanPlayerScanThroughWalls()) {
+        let effectApplied: Bool = false;
+        let hasAura: Bool = StatusEffectSystem.ObjectHasStatusEffect(GetPlayer(game), t"BaseStatusEffect.Intelligence_60_Ping_Aura");
         // Status effect just isn't being applied.
         // The player has the correct aura but nearby enemies do not hold the mark.
         // Let's just utilise cyberware detection for this instead.
-        if (isEnemy && isHighlighted) {
+        // FTLog(s"PlayerHasStatusEffect: \(hasAura)");
+        if (isEnemy && isHighlighted && hasAura) {
             // This effect inherits from the Ping quickhack and thus makes the same noise.
             // Useful for debugging but probably annoying for regular gameplay.
             effectApplied = statusEffectSys.ApplyStatusEffect(this.GetOwner().GetEntityID(), t"BaseStatusEffect.Intelligence_60_Ping");
         }
         // let hasPingStatus: Bool = StatusEffectSystem.ObjectHasStatusEffectWithTag(this.GetOwner(), n"Int60_Ping");
         // FTLog(s"ObjectHasStatusEffect: \(hasPingStatus)");
-        // This check is kinda superfluous but just in case something is immune to the status effect application.
         if ((this.GetOwner().IsDevice() || isNetRunnerNPC) || (isEnemy && effectApplied)) {
             this.SetScannableThroughWalls(true);
         }
